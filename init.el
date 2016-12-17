@@ -5,11 +5,18 @@
 
 (require 'package)
 
-(add-to-list 'package-archives
-       '("melpa" . "http://melpa.org/packages/") t)
+;; (add-to-list 'package-archives
+;;        '("melpa" . "http://melpa.org/packages/") t)
   
-(setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")
-			 ("gnu" . "http://elpa.gnu.org/packages/")))
+;; (setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")
+;; 			 ("gnu" . "http://elpa.gnu.org/packages/")))
+
+(setq package-archives  
+       '(("gnu"          . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/") 
+         ("melpa"        . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/") 
+         ("melpa-stable" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/") 
+         ("org"          . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/") 
+         ("marmalade"    . "https://mirrors.tuna.tsinghua.edu.cn/elpa/marmalade/")))
 
 (package-initialize)
 
