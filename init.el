@@ -58,12 +58,5 @@
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
-;;; Fix junk characters in shell-mode  
-;;; (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t) 
-;;; (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on t)
-
-;; Not supported IPython 5's new prompt behavior.
-(setenv "IPY_TEST_SIMPLE_PROMPT" "1")
-
 ;; init.el ends here
 
