@@ -29,7 +29,19 @@
     elpy
     flycheck
     material-theme
-    py-autopep8))
+    py-autopep8
+    ;;; ycmd
+    deferred
+    request-deferred
+    s
+    dash
+    let-alist
+    f
+    company
+    company-ycmd
+    flycheck-ycmd
+    cl-lib
+    ycmd))
 
 (mapc #'(lambda (package)
     (unless (package-installed-p package)
@@ -61,7 +73,6 @@
 ;; Not surpported IPython 5's new prompt behavior.
 (setenv "IPY_TEST_SIMPLE_PROMPT" "1")
 
-;; init.el ends here
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -77,3 +88,41 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;;; ----------------
+;;; ycmd config
+;;; ----------------
+
+;;(add-to-list 'load-path "~/.emacs.d/emacs-ycmd/")
+(require 'company)
+(add-hook 'c++-mode-hook 'company-mode)
+
+;;; To use ycmd-mode in cpp mode
+(require 'ycmd)
+(add-hook 'c++-mode-hook 'ycmd-mode)
+
+;;; specify how to run the server
+(set-variable 'ycmd-server-command '("python" "/home/yanfeng/.emacs.d/ycmd/ycmd"))
+;;; (set-variable 'ycmd-global-config "/home/yanfeng/.emacs.d/ycm_global_config.py")
+
+;;; company-ycmd
+(require 'company-ycmd)
+(company-ycmd-setup)
+
+
+;;; flycheck integration
+(require 'flycheck-ycmd)
+(flycheck-ycmd-setup)
+
+;;; Disabling ycmd-based flycheck for python mode
+(add-hook 'python-mode-hook (lambda () (add-to-list 'flycheck-disabled-checkers 'ycmd)))
+
+;;; Making flycheck and company work together
+(when (not (display-graphic-p))
+  (setq flycheck-indication-mode nil))
+
+;;; eldoc integration
+(require 'ycmd-eldoc)
+(add-hook 'ycmd-mode-hook 'ycmd-eldoc-setup)
+
+;; init.el ends here
