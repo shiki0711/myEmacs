@@ -25,6 +25,7 @@
 
 # Packages
 elpa
+ycmd
 
 # Bcakup files
 backups

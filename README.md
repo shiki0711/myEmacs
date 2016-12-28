@@ -8,5 +8,5 @@ My emacs configuration
 
 
 ## reference
-[python](http://codingpy.com/article/emacs-the-best-python-editor/)
+[python](http://codingpy.com/article/emacs-the-best-python-editor/)  
 [cpp](https://github.com/abingham/emacs-ycmd)
