@@ -3,8 +3,8 @@
 pwd=`pwd`
 
 clear_ycmd_and_exit(){
-    rm -rf ycmd
     cd $pwd
+    rm -rf ycmd
     exit 1
 }
 
@@ -23,7 +23,7 @@ echo $password | sudo -S pip install flake8 jedi ipython || exit 1
 # ycmd
 echo $password | sudo -S apt-get install build-essential cmake python-dev || exit 1
 if [ ! -d ycmd ]; then
-    git clone https://github.com/Valloric/ycmd.git || exit 1;
+    git clone https://github.com/Valloric/ycmd.git || clear_ycmd_and_exit;
     cd ycmd;
     git submodule update --init --recursive || clear_ycmd_and_exit;
     # Use local clang installer
